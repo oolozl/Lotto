@@ -63,11 +63,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        fun getShuffledLottoNumbers () : MutableList<Int>{
+            val lottoNumbers = mutableListOf<Int>()
+
+            for (number in 1..45){
+                lottoNumbers.add(number)
+            }
+            lottoNumbers.shuffle()
+
+            return lottoNumbers.subList(0,6)
+
+        }
 
         val randomCard = findViewById<CardView>(R.id.CardRandom)
         randomCard.setOnClickListener{
             val intent = Intent(this, ResultActivity::class.java)
-            intent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumbers()))
+//            intent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumbers()))
+            intent.putIntegerArrayListExtra("result", ArrayList(getShuffledLottoNumbers()))
+
             startActivity(intent)
         }
 
