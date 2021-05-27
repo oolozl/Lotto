@@ -12,7 +12,7 @@ fun getRandomLottoNumber ():Int{
     return Random().nextInt(45)+1
 }
 
-fun getRandomLottoNumbers (): MutableList<Int> {
+/*fun getRandomLottoNumbers (): MutableList<Int> {
     val lottoNumbers = mutableListOf<Int>()
 
     while (true) {
@@ -35,6 +35,23 @@ fun getRandomLottoNumbers (): MutableList<Int> {
             if (lottoNumbers.size >= 6)
                 break
         }
+    }
+    return lottoNumbers
+}*/
+fun getRandomLottoNumbers(): MutableList<Int> {
+
+    val lottoNumbers = mutableListOf<Int>()
+
+    for (i in 1..6) {
+
+        var number = 0
+        do {
+
+            number = getRandomLottoNumber()
+
+        } while (lottoNumbers.contains(number))
+
+        lottoNumbers.add(number)
     }
     return lottoNumbers
 }
